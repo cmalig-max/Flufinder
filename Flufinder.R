@@ -35,3 +35,4 @@ ggbarplot <- function(peptide_counts_table) {
 }
 counts_df <- data.frame(peptide_counts=c(3, 0, 0), rownames=c("A", "B","C"))
 ggbarplot(counts_df)
+

@@ -2,9 +2,6 @@ trypsinize <- function(proteins) {
   library(stringr)
   lapply(proteins, str_split_1, pattern="(?<=R|K)")
 }
-proteins <- list(A="LVKLHHIIFESMLKDMQRRHRVW", B="ADEFQGSMQKIEACWQSYDVQF",
-                 C="MINEPFSWRLEFHLSERKYDEIM")
-trypsinize(proteins)
 
 splitpeptides_to_masses <- function(aa) {
   aa_masses <- c(A=71.037, R=156.101, N=114.042, D=115.026, C=103.009,
@@ -18,13 +15,7 @@ splitpeptides_to_masses <- function(aa) {
   }
   lapply(peptide_masses, unlist)
 }
-aa <- list(A=list(c("L","V","K"),
-                  c("L","H","H","I","I","F","E","S","M","L","K"), c("D","M","Q","R")),
-           B=list(c("A","D","E","F","Q","G","S","M","Q","K"),
-                  c("I","E","A","C","W","Q","S","Y","D","V","Q","F")),
-           C=list(c("M","I","N","E","P","F","S","W","R"),
-                  c("L","E","F","H","L","S","E","R"), c("Y","D","E","I","M")))
-splitpeptides_to_masses(aa)$A
+
 ggbarplot <- function(peptide_counts_table) {
   library(ggplot2)
   ggplot(peptide_counts_table) +
@@ -33,5 +24,3 @@ ggbarplot <- function(peptide_counts_table) {
     theme_bw() +
     labs(x="Flu Strain", y="Peptide Counts")
 }
-counts_df <- data.frame(peptide_counts=c(3, 0, 0), rownames=c("A", "B","C"))
-ggbarplot(counts_df)
